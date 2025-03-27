@@ -1,0 +1,104 @@
+Projet : MiniCatalogue E-Commerce
+Contexte et Objectif
+L’objectif est de créer une application web qui affiche un catalogue de produits et permet à l’utilisateur de consulter les détails d’un produit spécifique. Les données des produits seront stockées en mémoire côté backend, donc pas besoin de base de données.
+
+Ce projet comprend 2 routes API et est conçu pour être simple tout en offrant un rendu attrayant en frontend.
+
+Brief pour le Développeur Frontend / Générateur d’Interface
+Objectif général :
+Créer une interface web qui affiche une liste de produits et permet de voir les détails d’un produit en cliquant dessus.
+
+Pages attendues :
+
+Page principale (Catalogue) :
+
+Afficher la liste des produits (nom, prix et image).
+
+Chaque produit peut être cliqué pour afficher ses détails.
+
+Page de détails d’un produit :
+
+Afficher les informations complètes du produit sélectionné (nom, description, prix et image).
+
+Fonctionnalités frontend :
+
+Consommation de deux routes API :
+
+Une pour récupérer la liste des produits.
+
+Une pour récupérer les détails d’un produit spécifique.
+
+Design minimaliste et responsive, avec un affichage clair et agréable.
+
+Spécifications Backend
+Technologie suggérée :
+
+Framework : Express.js (Node.js) ou Flask (Python).
+
+Stockage des données : Une simple liste en mémoire côté serveur.
+
+Routes à implémenter
+GET /api/products
+
+Description : Récupère la liste des produits.
+
+Arguments : Aucun.
+
+Retour : Une liste d’objets produits avec les informations de base (id, nom, prix, image).
+
+json
+Copier
+Modifier
+[
+  { "id": 1, "name": "T-shirt Cool", "price": 19.99, "image": "tshirt.jpg" },
+  { "id": 2, "name": "Chaussures Sport", "price": 49.99, "image": "shoes.jpg" },
+  { "id": 3, "name": "Casquette Hipster", "price": 14.99, "image": "cap.jpg" }
+]
+Statut HTTP : 200 OK.
+
+GET /api/products/{id}
+
+Description : Récupère les détails d’un produit spécifique.
+
+Arguments :
+
+Paramètre d’URL id (numérique).
+
+Retour : L’objet produit complet avec description.
+
+json
+Copier
+Modifier
+{
+  "id": 1,
+  "name": "T-shirt Cool",
+  "price": 19.99,
+  "image": "tshirt.jpg",
+  "description": "Un t-shirt super cool, parfait pour l'été !"
+}
+Statut HTTP :
+
+200 OK si le produit existe.
+
+404 Not Found si l’id n’existe pas.
+
+Détails pour le Frontend
+Liste des Produits
+Utiliser la route GET /api/products pour récupérer la liste et afficher chaque produit sous forme de carte avec :
+
+Nom : Ex. "T-shirt Cool".
+
+Prix : Ex. "19.99 €".
+
+Image : Affiche une image associée au produit.
+
+Détails d’un Produit
+Lorsque l’utilisateur clique sur un produit, appeler GET /api/products/{id} pour afficher :
+
+Nom.
+
+Prix.
+
+Description.
+
+Image (agrandie).

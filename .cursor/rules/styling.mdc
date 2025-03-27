@@ -1,0 +1,140 @@
+Instructions UX/UI pour le Frontend
+Objectif Principal
+Créer une interface web attrayante, moderne et facile à utiliser qui met en valeur le catalogue de produits et permet une navigation fluide entre la liste des produits et les détails d’un produit.
+
+Principes Clés de Design
+Minimalisme : Éviter les éléments encombrants. Priorité à la simplicité et à l'élégance.
+
+Responsive Design : Interface parfaitement adaptée aux mobiles, tablettes et ordinateurs.
+
+Visuels attractifs : Utiliser des images bien dimensionnées, des typographies modernes et des couleurs harmonieuses.
+
+Animations douces : Ajouter des transitions fluides pour une meilleure expérience utilisateur (par exemple, hover sur les cartes de produits, fade-in pour les pages).
+
+Pages et Design
+1. Page Principale : Catalogue
+Description : Une grille qui affiche les produits sous forme de cartes élégantes.
+
+Disposition :
+
+Grille responsive avec 2 à 4 colonnes selon la taille de l'écran.
+
+Marges bien espacées entre les cartes.
+
+Chaque carte de produit :
+
+Image du produit (centrée, bien dimensionnée).
+
+Nom du produit (police claire, taille moyenne).
+
+Prix du produit (en gras, facilement visible).
+
+Un bouton ou un effet "cliquer pour voir les détails" (par exemple, une icône de loupe ou une surbrillance au hover).
+
+Couleurs :
+
+Fond clair (blanc ou gris très pâle).
+
+Accents colorés pour les boutons et le prix (exemple : bleu pour les boutons, vert pour les prix).
+
+Effets :
+
+Ajouter une ombre douce (box-shadow) aux cartes.
+
+Zoom léger de l'image au survol.
+
+Interactions :
+
+Lorsque l'utilisateur clique sur une carte, il est redirigé vers la page de détails correspondante.
+
+2. Page de Détails d’un Produit
+Description : Une présentation élégante des informations détaillées d’un produit.
+
+Disposition :
+
+Mise en page centrée.
+
+À gauche : Une grande image du produit.
+
+À droite : Détails du produit.
+
+Contenu à afficher :
+
+Nom du produit : Police grande et élégante.
+
+Description : Texte clair, bien espacé.
+
+Prix : Mis en avant avec une taille plus grande et une couleur distinctive (ex. vert).
+
+Bouton de retour au catalogue : Positionné en bas ou en haut.
+
+Couleurs :
+
+Utiliser les mêmes couleurs que la page catalogue pour la cohérence.
+
+Ajouter des dégradés ou des éléments visuels subtils pour embellir l’apparence.
+
+Effets :
+
+Transition fluide entre les pages (ex. effet de fade-in au chargement des détails).
+
+Ajouter un zoom ou une loupe pour l'image produit si possible.
+
+Interactions et Effets Spéciaux
+Transitions douces :
+
+Chaque changement de page (de la liste au détail) doit être fluide, sans transition brusque.
+
+Exemple : opacity ou slide-in.
+
+Effet au survol (hover) :
+
+Les boutons et les cartes doivent réagir au survol de la souris (changement de couleur, légère élévation).
+
+Animations :
+
+Utiliser de petites animations CSS/JS pour attirer l’attention (par exemple, légère pulsation sur le bouton "Voir les détails").
+
+Feedback visuel :
+
+Lorsqu’un utilisateur clique sur un bouton ou une carte, fournir un retour visuel (changement de couleur, icône d’attente si le chargement est en cours).
+
+Typographie et Icônes
+Typographie :
+
+Police moderne et lisible (ex. : "Roboto", "Poppins").
+
+Tailles variées pour hiérarchiser les informations (grande pour les titres, moyenne pour les descriptions).
+
+Icônes :
+
+Utiliser des icônes modernes et simples pour renforcer l'expérience utilisateur (ex. : une icône de panier ou de loupe sur les cartes).
+
+Mobile First
+La grille du catalogue doit s'adapter pour afficher une seule colonne sur mobile.
+
+Les boutons doivent être suffisamment grands pour être facilement cliquables avec un doigt.
+
+Navigation intuitive : Prévoir une icône ou un bouton pour revenir facilement à la page précédente.
+
+Couleurs et Styles (Suggestion)
+Palette :
+
+Fond clair (exemple : #f9f9f9).
+
+Accents vifs (bleu : #3498db, vert : #2ecc71).
+
+Texte sombre (gris foncé : #333).
+
+Boutons :
+
+Coins arrondis, ombres douces.
+
+Changement de couleur au clic.
+
+Cards (produits) :
+
+Bords arrondis, ombre légère.
+
+Animation de soulèvement au survol.
+
