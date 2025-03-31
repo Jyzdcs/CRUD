@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 Instructions UX/UI pour le Frontend
 Objectif Principal
 Créer une interface web attrayante, moderne et facile à utiliser qui met en valeur le catalogue de produits et permet une navigation fluide entre la liste des produits et les détails d’un produit.

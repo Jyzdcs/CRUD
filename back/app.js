@@ -1,27 +1,31 @@
 import express from "express";
 import client from "./db.js";
 
-class Cart {
-  constructor(id, productsId, totalPrice) {
+class Product {
+  constructor(id, name, price) {
     this.id = id;
-    this.productsId = productsId;
+    this.name = name;
+    this.price = price;
+  }
+}
+
+class Cart {
+  constructor(id, products, totalPrice) {
+    this.id = id;
+    this.products = products;
     this.totalPrice = totalPrice;
   }
 
-  addProduct(productId) {
-    this.productsId.push(productId);
+  addProduct(product) {
+    this.products.push(product);
   }
 
-  removeProduct(productId) {
-    this.productsId = this.productsId.filter((id) => id !== productId);
-  }
-
-  getTotalPrice() {
-    return this.productsId.reduce((acc, id) => acc + id.price, 0);
+  removeProduct(product) {
+    this.products = this.products.filter((p) => p !== product);
   }
 
   printCart() {
-    console.log(this.productsId);
+    console.log(this.products);
   }
 }
 
@@ -41,7 +45,7 @@ class User {
 const main = () => {
   const user = new User(1, "John", "john@example.com");
   user.introduce();
-  user.cart.addProduct(1);
+  user.cart.addProduct(new Product(1, "Telephone", 100));
   user.cart.printCart();
 };
 

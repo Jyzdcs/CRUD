@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 Projet : MiniCatalogue E-Commerce
 Contexte et Objectif
 L’objectif est de créer une application web qui affiche un catalogue de produits et permet à l’utilisateur de consulter les détails d’un produit spécifique. Les données des produits seront stockées en mémoire côté backend, donc pas besoin de base de données.
