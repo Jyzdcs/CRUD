@@ -26,6 +26,27 @@ Récapitulatif des routes et notion associées
 | /articles/:id | PUT | update(id, updateArticleDto)| Controller, Pipes, Guard (authentification/autorisation), Custom Decorator |
 | /articles/:id | DELETE | delete(id) | Controller, Guard (sécurisation), Exception Filter |
 
+Voici pourquoi chaque notion est associée à une route spécifique :
+
+GET /articles – Controller & Interceptor (logging des réponses) :
+La méthode findAll() sert à récupérer l'ensemble des articles. L'interceptor de logging est particulièrement utile ici pour observer le format et la durée de la réponse, ce qui est souvent moins critique en termes de sécurité mais très important pour le suivi et la performance.
+
+GET /articles/:id – Controller, Pipes (validation et transformation) & Exception Filter :
+Lorsqu'on récupère un article par son identifiant, il est essentiel de valider et de transformer ce paramètre (souvent passé en tant que chaîne) en un format attendu (par exemple, un nombre ou un UUID) avec les pipes. L'exception filter, quant à lui, permet de gérer le cas où l'article n'est pas trouvé en renvoyant une réponse uniforme et bien structurée.
+
+POST /articles – Controller, Validation Pipe (DTO), Custom Decorator (@User()) & Exception Filter :
+Pour la création d'un article, il faut s'assurer que les données envoyées respectent la structure définie par le DTO (via le Validation Pipe). L'ajout d'un custom decorator comme @User() permet d'obtenir automatiquement des informations sur l'utilisateur (souvent issus d'une simulation d'authentification ou d'un vrai mécanisme). L'exception filter gère les erreurs qui pourraient survenir lors de ce processus de création (par exemple, en cas de données manquantes ou incorrectes).
+
+PUT /articles/:id – Controller, Pipes, Guard (authentification/autorisation) & Custom Decorator :
+Lors d'une mise à jour d'article, il est crucial d'assurer que l'utilisateur a le droit de modifier cet article. Le guard protège la route en vérifiant l'authentification et potentiellement les droits (par exemple, en comparant l'utilisateur authentifié et l'owner de l'article). Les pipes permettent de valider la donnée en entrée et le custom decorator peut fournir des informations sur l'utilisateur pour faciliter cette vérification.
+
+DELETE /articles/:id – Controller, Guard (sécurisation) & Exception Filter :
+La suppression d'un article est une opération sensible. Le guard est donc essentiel pour empêcher toute suppression non autorisée. L'exception filter assure que, en cas d'erreur (par exemple, si l'article n'existe pas ou si l'utilisateur n'est pas autorisé), la réponse est formatée de manière cohérente et informative.
+En associant ces notions à des routes spécifiques, le plan vous permet de :
+Observer directement l'impact de chaque concept sur les comportements attendus (validation, sécurité, traitement des erreurs, logging).
+Structurer progressivement votre API en implantant ces mécanismes dès les premiers endpoints, ce qui facilite la compréhension et le débogage.
+Mettre en place une architecture modulaire où chaque route bénéficie des améliorations (sécurité, filtration ou transformation) qui correspondent à son rôle et à ses exigences opérationnelles.
+
 src/
 ├── app.module.ts
 ├── articles/ // Module Articles (CRUD)

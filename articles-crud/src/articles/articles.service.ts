@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { Article } from './articles.entity';
+import { Article } from './dto/create-article.dto';
 
 @Injectable()
 export class ArticleService {
@@ -12,11 +12,14 @@ export class ArticleService {
   }
 
   async findOne(id: string) {
-    return (
-      await this.databaseService.query('SELECT * FROM articles WHERE id = $1', [
-        id,
-      ])
-    ).rows[0];
+    const result = await this.databaseService.query(
+      'SELECT * FROM articles WHERE id = $1',
+      [id],
+    );
+    if (result.rowCount === 0) {
+      throw new NotFoundException('Article not found');
+    }
+    return result.rows[0];
   }
 
   async create(article: Article) {
@@ -26,10 +29,16 @@ export class ArticleService {
         article.owner,
         article.article_name,
         article.price,
-        new Date().toLocaleDateString('fr-FR'),
+        new Date().toISOString(),
       ],
     );
-    return { message: 'Article created successfully' };
+    if (result.rowCount === 0) {
+      throw new NotFoundException('Article not created');
+    }
+    return {
+      message: 'Article created successfully',
+      new_article: result.rows[0],
+    };
   }
 
   async update(id: string, article: Article) {
@@ -39,11 +48,17 @@ export class ArticleService {
         article.owner,
         article.article_name,
         article.price,
-        new Date().toLocaleDateString('fr-FR'),
+        new Date().toISOString(),
         id,
       ],
     );
-    return { message: 'Article updated successfully' };
+    if (result.rowCount === 0) {
+      throw new NotFoundException('Article not found');
+    }
+    return {
+      message: 'Article updated successfully',
+      updated_article: result.rows[0],
+    };
   }
 
   async delete(id: string) {
