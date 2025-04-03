@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class Article {
+export class CreateArticleDto {
   @IsNotEmpty()
   @IsString()
   owner: string;

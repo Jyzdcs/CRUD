@@ -9,6 +9,10 @@ async function bootstrap() {
       transform: true,
       whitelist: true,
       forbidNonWhitelisted: true,
+      validationError: {
+        target: false,
+        value: false,
+      },
     }),
   );
   app.useGlobalFilters(new HttpExceptionFilter());

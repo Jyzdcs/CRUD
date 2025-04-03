@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { Article } from './dto/create-article.dto';
+import { CreateArticleDto } from './dto/create-article.dto';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticleService {
@@ -22,7 +23,7 @@ export class ArticleService {
     return result.rows[0];
   }
 
-  async create(article: Article) {
+  async create(article: CreateArticleDto) {
     const result = await this.databaseService.query(
       'INSERT INTO articles (owner, article_name, price, posted_at) VALUES ($1, $2, $3, $4) RETURNING id',
       [
@@ -41,7 +42,7 @@ export class ArticleService {
     };
   }
 
-  async update(id: string, article: Article) {
+  async update(id: string, article: UpdateArticleDto) {
     const result = await this.databaseService.query(
       'UPDATE articles SET owner = $1, article_name = $2, price = $3, posted_at = $4 WHERE id = $5',
       [
